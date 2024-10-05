@@ -259,30 +259,31 @@ def main(jira_url, username, password, exception_statuses):
     # Initialize JIRA connection
     jiraInstance = initialize_jira_connection(jira_url, username, password)
 
+    # list_all_boards(jiraInstance)
+    # return
     # print_sprint_title_and_issue_id(jiraInstance,"WS-838")
     # return
     activeSprint = get_active_sprint(jiraInstance, BOARD_ID)
 
-    notify_incomplete_tasks(jiraInstance, activeSprint.id)
+    # notify_incomplete_tasks(jiraInstance, activeSprint.id)
 
     # Fetch issues from the specified sprint
     issues_in_sprint = fetch_issues_from_sprint(jiraInstance, activeSprint.id, exception_statuses)
 
-
     # Extract details from each issue
     issues_details = [extract_issue_details(jiraInstance, issue) for issue in issues_in_sprint]
 
-    def custom_sort_key(issue_detail):
-        assignee = issue_detail['assignee']
-        return (assignee != "Pouria Azadeh", assignee)
+    # def custom_sort_key(issue_detail):
+    #     assignee = issue_detail['assignee']
+    #     return (assignee != "Pouria Azadeh", assignee)
 
-    sorted_issues_details = sorted(issues_details, key=custom_sort_key)
+    # sorted_issues_details = sorted(issues_details, key=custom_sort_key)
 
     # Initialize a PowerPoint presentation
     prs = Presentation()
 
     # Create the presentation slides
-    create_summary_presentation(prs, sorted_issues_details)
+    create_summary_presentation(prs, issues_details)
 
     # Save the presentation
     save_presentation(prs, f"{activeSprint.name}.pptx")
@@ -681,6 +682,37 @@ def delete_gantt_chart_images(image_folder=None):
 
     if not gantt_chart_files:
         print("No Gantt chart files found to delete.")
+
+
+def list_all_boards(jira_instance):
+    """
+    Lists all boards with their names and IDs in a Jira instance.
+
+    :param jira_instance: An authenticated JIRA instance.
+    :return: A list of dictionaries containing board names and IDs.
+    """
+    try:
+        boards = jira_instance.boards()
+
+        if not boards:
+            print("No boards found.")
+            return []
+
+        boards_list = []
+        for board in boards:
+            board_info = {
+                "id": board.id,
+                "name": board.name
+            }
+            boards_list.append(board_info)
+            print(f"Board ID: {board.id}, Name: {board.name}")
+
+        return boards_list
+
+    except JIRAError as e:
+        print(f"Failed to fetch boards from JIRA: {e}")
+        return []
+
 
 if __name__ == "__main__":
     load_dotenv()
