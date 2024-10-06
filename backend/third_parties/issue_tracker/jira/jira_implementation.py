@@ -1,6 +1,6 @@
 from jira import JIRAError
-from Backend.third_parties.issue_tracker.issue_tracking_inteface import IssueTrackingInterface
-from Backend.utils.date_helpers.date_formatter import format_date
+from backend.third_parties.issue_tracker.issue_tracking_inteface import IssueTrackingInterface
+from backend.utils.date_helpers.date_formatter import format_date
 
 
 class JiraImplementation(IssueTrackingInterface):

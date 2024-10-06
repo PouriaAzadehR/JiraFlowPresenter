@@ -1,5 +1,5 @@
 from flask import request, jsonify, send_file
-from Backend.applications.issue_tracker_app import IssueTrackerApp
+from backend.applications.issue_tracker_app import IssueTrackerApp
 import os
 
 

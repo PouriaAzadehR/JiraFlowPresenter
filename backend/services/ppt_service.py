@@ -1,7 +1,7 @@
 import os
 
 from pptx import Presentation
-from Backend.utils.ppt_helpers.ppt_helpers import create_squad_slide, create_summary_slide, create_assignee_slide
+from backend.utils.ppt_helpers.ppt_helpers import create_squad_slide, create_summary_slide, create_assignee_slide
 
 
 class PptService:

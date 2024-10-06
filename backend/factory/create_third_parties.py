@@ -1,7 +1,7 @@
 import os
 
-from Backend.infra.issue_tracker.jira_connector import connect_to_jira
-from Backend.third_parties.issue_tracker.jira.jira_implementation import JiraImplementation
+from backend.infra.issue_tracker.jira_connector import connect_to_jira
+from backend.third_parties.issue_tracker.jira.jira_implementation import JiraImplementation
 
 
 def create_third_parties():

@@ -1,6 +1,6 @@
-from Backend.factory.create_third_parties import create_third_parties
-from Backend.services.issue_tracker_service import IssueTrackerService
-from Backend.services.ppt_service import PptService
+from backend.factory.create_third_parties import create_third_parties
+from backend.services.issue_tracker_service import IssueTrackerService
+from backend.services.ppt_service import PptService
 
 
 def create_services():

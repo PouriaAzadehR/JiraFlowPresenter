@@ -1,4 +1,4 @@
-from Backend.applications.issue_tracker_app import IssueTrackerApp
+from backend.applications.issue_tracker_app import IssueTrackerApp
 
 
 def create_application(services):

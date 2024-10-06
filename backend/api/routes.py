@@ -1,7 +1,7 @@
 from flask import Blueprint
-from Backend.api.handlers.get_demo_ppt import generate_ppt_handler
-from Backend.api.handlers.list_all_sprints_of_board import list_sprints_for_board_handler
-from Backend.api.handlers.list_boards import list_all_boards_handler
+from backend.api.handlers.get_demo_ppt import generate_ppt_handler
+from backend.api.handlers.list_all_sprints_of_board import list_sprints_for_board_handler
+from backend.api.handlers.list_boards import list_all_boards_handler
 
 api = Blueprint('api', __name__)
 
@@ -31,3 +31,16 @@ def register_routes(api, application):
         methods=['GET']
     )
 
+    api.add_url_rule(
+        '/health/liveness',
+        'liveness',
+        lambda: ({"status": "OK"}, 200),
+        methods=['GET']
+    )
+
+    api.add_url_rule(
+        '/health/readiness',
+        'readiness',
+        lambda: ({"status": "OK"}, 200),
+        methods=['GET']
+    )

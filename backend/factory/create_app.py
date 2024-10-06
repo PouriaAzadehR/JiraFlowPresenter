@@ -1,7 +1,7 @@
 from flask import Flask
-from Backend.api.routes import register_routes
-from Backend.factory.create_applications import create_application
-from Backend.factory.create_services import create_services
+from backend.api.routes import register_routes
+from backend.factory.create_applications import create_application
+from backend.factory.create_services import create_services
 from flask_cors import CORS  # Import CORS
 
 
