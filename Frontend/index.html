@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jira Presenter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="jiraTitle">Jira Presenter</div> <!-- Title added here -->
+
+
+        <!-- Search and select boards in one input using datalist -->
+        <input list="boardsList" id="searchBoardInput" placeholder="Search or select a board...">
+        <datalist id="boardsList">
+            <!-- Options will be populated dynamically -->
+        </datalist>
+
+        <p id="boardInfo"></p> <!-- Display selected board info -->
+
+        <!-- Sprint dropdown -->
+        <select id="sprintsDropdown" disabled>
+            <option value="" disabled selected>Select a sprint</option>
+            <!-- Sprints will be populated dynamically -->
+        </select>
+
+        <!-- Button to trigger download of the PPT for the selected sprint (centered below dropdown) -->
+        <div class="button-container">
+            <button id="downloadPptButton" disabled>Download PPT</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
